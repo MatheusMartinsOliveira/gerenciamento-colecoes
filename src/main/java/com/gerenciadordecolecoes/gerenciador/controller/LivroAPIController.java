@@ -34,32 +34,25 @@ public class LivroAPIController {
     @PostMapping
     public String adicionar(@RequestBody LivroDTO livro, @RequestHeader("Authorization") String auth) {
         String token = auth.replace("Bearer ", "");
-        if(tokenService.validarToken(token)) {
+            tokenService.validarToken(token);
             livroService.adicionarLivros(livro);
-        return "livro adicionado com sucesso!";
-        } else {
-            return null;
-        }
+            return "livro adicionado com sucesso!";
+
     }
     
     @GetMapping("/listar")
     public List<LivroDTO> listarTodos(@RequestHeader("Authorization") String auth) {
         String token = auth.replace("Bearer ", "");
-        if(tokenService.validarToken(token)) {
-            return livroService.lerTodos();
-        } else{
-            return null;
-        }    
+        tokenService.validarToken(token);
+        return livroService.lerTodos();
+           
     }
     
     @DeleteMapping("/deletar/{idLivro}")
     public String deletar(@PathVariable int idLivro, @RequestHeader("Authorization") String auth){
         String token = auth.replace("Bearer ", "");
-        if(tokenService.validarToken(token)) {
+            tokenService.validarToken(token);
             livroService.deletarLivro(idLivro);
             return "Livro deletado com sucesso!";
-        } else{
-            return null;
-        }
     }
 }

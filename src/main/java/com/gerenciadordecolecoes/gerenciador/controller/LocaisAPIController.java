@@ -31,11 +31,7 @@ public class LocaisAPIController {
     @GetMapping("/listar")
     public List<LocalDTO> listarLocais(@RequestHeader("Authorization") String auth){
         String token = auth.replace("Bearer ", "");
-        if(tokenService.validarToken(token)) {
-            return locaisService.listarLocais();
-        }
-        else{
-            return null;
-        }
+            tokenService.validarToken(token);
+            return locaisService.listarLocais();   
     }
 }
