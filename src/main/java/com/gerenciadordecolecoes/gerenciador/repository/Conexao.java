@@ -15,9 +15,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class Conexao {
-    private static final String url = "jdbc:mysql://localhost:3306/colecao_db";
-    private static final String user = "root";
-    private static final String senha = "caca010109";
+    private static final String url = "jdbc:mysql://localhost:3306/seu_banco_de_dados";
+    private static final String user = "seu_user";
+    private static final String senha = "sua_senha";
     
     public static Connection conn = null;
     
